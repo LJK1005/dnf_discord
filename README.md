@@ -40,7 +40,7 @@ pip install -r requirements.txt
 
 ### 1) `.env`
 
-`.env.example`에 값을 채우고 `.env`로 파일명 변경.
+`.env.example`에 값을 채우고 `.env`로 파일명 변경
 
 ### 2) `config/accounts.json`
 
@@ -65,11 +65,11 @@ python3 DnF.py
 python3 -m dnf_discord
 ```
 
-## 로그
+## 작업 로그 기록
 
-- 기본 위치: `logs/dnf_discord_YYYY-MM-DD.log`
+- 저장 위치: `logs/dnf_discord_YYYY-MM-DD.log`
 
-## 데이터 저장 구조(MongoDB)
+## MongoDB 데이터 구조
 
 - 데이터베이스명 : `dnf_discord`
 - 컬렉션명은 계정명으로 지정
