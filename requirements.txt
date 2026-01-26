@@ -1,0 +1,6 @@
+selenium
+pandas
+discord.py
+dataframe_image
+python-dotenv
+pymongo

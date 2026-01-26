@@ -1,0 +1,1 @@
+"""dnf_discord package."""
