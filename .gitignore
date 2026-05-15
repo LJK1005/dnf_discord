@@ -11,3 +11,5 @@ dist/
 accounts.json
 *.egg-info/
 chromedriver-linux64/
+.DS_Store
+._*
