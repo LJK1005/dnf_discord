@@ -7,6 +7,7 @@ from typing import Dict, Optional
 from dotenv import load_dotenv
 
 from .config import DEFAULT_ACCOUNTS_PATH, PROJECT_ROOT, load_accounts
+from .parser import parse_korean_number
 from .scraper import STAT_NAME_MAP
 from .storage_mongo import MongoStorage
 
@@ -38,6 +39,9 @@ def _to_int(value: Optional[str]) -> Optional[int]:
     try:
         return int(text)
     except ValueError:
+        korean = parse_korean_number(text)
+        if korean != 0:
+            return korean
         try:
             return int(float(text))
         except ValueError:

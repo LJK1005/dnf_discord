@@ -9,6 +9,16 @@ from selenium.webdriver.common.by import By
 from .parser import parse_korean_number
 
 
+def _parse_int_cell(raw: str) -> int:
+    text = raw.replace(" ", "").replace(",", "")
+    if not text:
+        return 0
+    try:
+        return int(text)
+    except ValueError:
+        return parse_korean_number(text)
+
+
 STAT_NAME_MAP = {
     "랭킹": "ranking",
     "버프점수": "buff_score",
@@ -88,7 +98,7 @@ def _parse_entry_stat_b(entry) -> Dict[str, int]:
         stat_value_2 = entry.find_element(
             by=By.CSS_SELECTOR, value=STAT_B_VALUE_2_SELECTOR
         ).text
-        stat_value_2 = int(stat_value_2.replace(" ", "").replace(",", ""))
+        stat_value_2 = _parse_int_cell(stat_value_2)
         key_2 = STAT_NAME_MAP.get(stat_name_2.strip())
         if key_2 and stat_value_2:
             stats[key_2] = stat_value_2
@@ -101,7 +111,7 @@ def _parse_entry_stat_b(entry) -> Dict[str, int]:
             stat_value_4 = entry.find_element(
                 by=By.CSS_SELECTOR, value=STAT_B_VALUE_4_SELECTOR
             ).text
-            stat_value_4 = int(stat_value_4.replace(" ", "").replace(",", ""))
+            stat_value_4 = _parse_int_cell(stat_value_4)
             key_4 = STAT_NAME_MAP.get(stat_name_4.strip())
             if key_4 and stat_value_4:
                 stats[key_4] = stat_value_4
